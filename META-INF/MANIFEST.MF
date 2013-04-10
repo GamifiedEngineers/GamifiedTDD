@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GamifiedTDD
-Bundle-SymbolicName: GamifiedTDD
+Bundle-SymbolicName: GamifiedTDD;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: gamifiedtdd.Activator
 Require-Bundle: org.eclipse.ui,
