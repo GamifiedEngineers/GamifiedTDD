@@ -1,10 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GamifiedTDD
-Bundle-SymbolicName: GamifiedTDD
+Bundle-SymbolicName: GamifiedTDD;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: gamifiedtdd.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.eclipse.jdt.junit,
+ org.eclipse.jdt.junit.model,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.ltk.core.refactoring.history

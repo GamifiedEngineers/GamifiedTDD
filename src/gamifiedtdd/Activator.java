@@ -1,5 +1,10 @@
 package gamifiedtdd;
 
+import gamifiedtdd.scoreboard.MoodManager.Level;
+
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -45,6 +50,40 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static Activator getDefault() {
 		return plugin;
+	}
+	
+	/**
+	 * Returns an image descriptor for the image file at the given plug-in
+	 * relative path
+	 * 
+	 * @param path
+	 *          the path
+	 * @return the image descriptor
+	 */
+	public static ImageDescriptor getImageDescriptor(String path) {
+		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+
+	@Override
+	protected void initializeImageRegistry(ImageRegistry reg) {
+		loadImagesForLevels(reg);
+	}
+
+	private void loadImagesForLevels(ImageRegistry reg) {
+		for (Level level : Level.values()) {
+			String name = level.name();
+			reg.put(String.format("%s-default1", name), getImageDescriptor(String.format("icons/%s-default1.png", name)));
+			reg.put(String.format("%s-default2", name), getImageDescriptor(String.format("icons/%s-default2.png", name)));
+			reg.put(String.format("%s-happy1", name), getImageDescriptor(String.format("icons/%s-happy1.png", name)));
+			reg.put(String.format("%s-happy2", name), getImageDescriptor(String.format("icons/%s-happy2.png", name)));
+			reg.put(String.format("%s-upset1", name), getImageDescriptor(String.format("icons/%s-upset1.png", name)));
+			reg.put(String.format("%s-upset2", name), getImageDescriptor(String.format("icons/%s-upset2.png", name)));
+			reg.put(String.format("%s-health", name), getImageDescriptor(String.format("icons/%s-health.png", name)));
+		}
+	}
+
+	public Image getImageFromKey(String key) {
+		return getImageRegistry().get(key);
 	}
 
 }
